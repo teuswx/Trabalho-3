@@ -17,7 +17,8 @@ O trabalho tem como objetivo explorar e implementar árvores de decisão em dife
 ### Dataset Escolhido para a parte 2 do trabalho 📈
 
 Os dados escolhidos são referentes ao Campeonato Mundial de Fórmula 1, abrangendo o período de 1950 a 2024. O dataset foi obtido no Kaggle através do seguinte link: [Fórmula 1 World Championship Dataset (1950-2020)](https://www.kaggle.com/datasets/rohanrao/formula-1-world-championship-1950-2020). Os dados foram filtrados em um arquivo para facilitar a análise.
-O objetivo é analisar os dados de 2023 e 2024, utilizando os dados de 2023 para treinamento e os de 2024 para teste. A meta é prever quais pilotos mantiveram um desempenho consistente em 2024, com base no número de voltas realizadas e na posição inicial no grid.  
+
+O objetivo é analisar os dados de 2023 e 2024, utilizando os dados de 2023 para treinamento e os de 2024 para teste, também prever quais pilotos mantiveram um desempenho consistente em 2024, com base no número de voltas realizadas e na posição inicial no grid.  
 
 #### Dados Selecionados  
 
