@@ -104,6 +104,16 @@ Os resultados obtidos, principalmente para pilotos como **Max Verstappen** e **L
 Por fim, é importante ressaltar que, apesar da acurácia obtida, sempre há espaço para melhorias no modelo, como a inclusão de mais variáveis que possam influenciar o desempenho dos pilotos, o que pode aprimorar ainda mais as previsões em cenários futuros.
 
 
+  ## Compilação e Execução 
+
+A pilha dinâmica disponibilizada possui um arquivo Makefile que realiza todo o procedimento de compilação e execução. Para tanto, temos as seguintes diretrizes de execução:
+
+
+| Comando                |      Função                                                                                           |                     
+| -----------------------| ------------------------------------------------------------------------------------------------- |
+|  `python analisef1.py` | Realiza a filtragem dos dados necessários para análise                                            |
+|  `python arvore.py`    |              Roda o código da parte 1 do trabalho                                                 |
+
 ## Autores
 
 - Frank Leite Lemos Costa – Aluno do 6º período de Engenharia da Computação.
