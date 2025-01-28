@@ -32,15 +32,45 @@ A variável alvo (**`target`**) é uma coluna no arquivo `dadosFiltrados.xlsx`, 
 - **1**: Pilotos com pontuação acima de 10.  
 - **0**: Pilotos com pontuação abaixo de 10.  
 
-Este critério foi estabelecido para identificar pilotos que apresentaram uma pontuação consistente nas corridas, permitindo avaliar sua performance ao longo do campeonato. Como a coluna **`target`** utiliza como parâmetro a pontuação de cada piloto, métricas muito relacioandas a pontuação são descartadas.
-
+Este critério foi estabelecido para identificar pilotos que apresentaram uma pontuação consistente nas corridas, permitindo avaliar sua performance ao longo do campeonato. Como a coluna **`target`** utiliza como parâmetro a pontuação de cada piloto, métricas muito relacionadas a pontuação são descartadas.
 
 ## Descrição dos Algoritmos Implementados 📜  
 
 - **Arquivo `arvore.py`**:  
   Implementa uma árvore de decisão iterativa com diversas perguntas para auxiliar o usuário na escolha de hobbies ou carreiras com base em suas preferências e respostas. O código é estruturado para fornecer sugestões personalizadas, criando uma interação simples.
+  
 - **Notebook `ML.ipynb`**:  
   Contém o código desenvolvido utilizando a biblioteca `scikit-learn` para análise e previsão com base no dataset selecionado. O notebook realiza o pré-processamento dos dados, treina uma árvore de decisão para identificar padrões e faz previsões sobre o desempenho dos pilotos no dataset de Fórmula 1.
+
+## Algoritmos de Classificação 📊
+
+Além da árvore de decisão, foram implementados outros algoritmos de classificação para comparar seu desempenho. Os algoritmos escolhidos são:
+
+### 1. **Support Vector Machine (SVM)**  
+SVM é um algoritmo de aprendizado supervisionado que pode ser usado tanto para problemas de classificação quanto de regressão. O principal objetivo do SVM é encontrar um hiperplano que melhor separe as diferentes classes em um espaço de características. No contexto de classificação, o SVM tenta encontrar a "margem máxima" entre as classes, o que significa que ele busca o hiperplano que tem a maior distância de qualquer ponto de dados de ambas as classes.
+
+- **Vantagens:**
+  - Eficiente em espaços de alta dimensão.
+  - Funciona bem em casos onde o número de dimensões é maior do que o número de amostras.
+  - Utiliza o conceito de margem, o que pode resultar em uma boa generalização.
+
+- **Desvantagens:**
+  - Requer mais tempo de treinamento em grandes datasets.
+  - Difícil de interpretar em alguns casos.
+  - Sensível a outliers.
+
+### 2. **K-Nearest Neighbors (KNN)**  
+O KNN é um algoritmo de aprendizado supervisionado que classifica um ponto de dados com base na classe da maioria de seus vizinhos mais próximos no espaço das características. A ideia é simples: para classificar uma amostra, o algoritmo encontra os K vizinhos mais próximos e faz a classificação com base na maioria das classes desses vizinhos.
+
+- **Vantagens:**
+  - Fácil de entender e implementar.
+  - Não requer um modelo explícito de treinamento, o que torna o treinamento rápido.
+  - Funciona bem com dados não-lineares e com muitas classes.
+
+- **Desvantagens:**
+  - Pode ser computacionalmente caro, especialmente com grandes volumes de dados.
+  - Sensível ao valor de K e à escolha da distância.
+  - Pode sofrer de alta variação em datasets com ruído.
 
 ## Estrutura do Projeto 🏗️
 
@@ -49,13 +79,16 @@ Este critério foi estabelecido para identificar pilotos que apresentaram uma po
   - **pandas**: Para manipulação e análise de dados, incluindo carregamento e pré-processamento do dataset.
   - **scikit-learn**:
     - `DecisionTreeClassifier`: Para criação e treinamento da árvore de decisão.
+    - `SVC`: Para criação e treinamento do modelo SVM.
+    - `KNeighborsClassifier`: Para criação e treinamento do modelo KNN.
     - `train_test_split`: Para dividir os dados em conjuntos de treino e teste.
     - `accuracy_score`: Para calcular a acurácia do modelo.
     - `plot_tree`: Para visualização gráfica da árvore de decisão.
   - **matplotlib.pyplot**: Para criar gráficos e visualizar a árvore de decisão.
 
+## Resultados das Medições de Desempenho ⏱️
 
-## Resultados das medicões de desempenho ⏱️
+### Decision Tree
 Com o modelo desenvolvido, foi possível analisar os dados do dataset e visualizar a árvore de decisão gerada durante o treinamento. A árvore de decisão foi construída para classificar os pilotos com base nos atributos selecionados, e sua estrutura fornece uma visão clara das regras usadas pelo modelo para fazer as previsões.  
 
 Abaixo está a visualização da árvore de decisão treinada:
@@ -64,6 +97,12 @@ Abaixo está a visualização da árvore de decisão treinada:
 
 Foi possível obter uma acurácia de **0.88**, o que significa um valor **muito bom** de acerto para previsão.
 
+### KNN
+
+Foi possível obter uma acurácia de **0.86**, o que significa um valor **muito bom** de acerto para previsão.
+### SVM
+
+Foi possível obter uma acurácia de **0.86**, o que significa um valor **muito bom** de acerto para previsão.
 ## Pilotos com Maior Chance de Obter Pontos em 2025
 
 Com base nas previsões realizadas, foi possível obter as probabilidades médias de cada piloto para conseguir pontos acima de 10. Abaixo estão os **10 pilotos com maior chance** de alcançar esse feito, classificados em ordem decrescente de probabilidade:
@@ -91,8 +130,6 @@ Com base nas previsões realizadas, foi possível obter as probabilidades média
 
 Esses resultados são baseados em um modelo de previsão que utiliza dados históricos para estimar as probabilidades de cada piloto alcançar mais de 10 pontos ao longo da temporada de 2025.
 
-
-
 ## Considerações Finais 📝
 
 O trabalho foi desenvolvido com o objetivo de explorar a aplicação de árvores de decisão em diferentes contextos, com ênfase na previsão de desempenho de pilotos de Fórmula 1 para a temporada de 2025. Através do uso de dados históricos, foi possível criar um modelo que permitiu calcular a probabilidade de cada piloto alcançar pontos acima de 10, com uma acurácia de **0.88**.
@@ -103,11 +140,9 @@ Os resultados obtidos, principalmente para pilotos como **Max Verstappen** e **L
 
 Por fim, é importante ressaltar que, apesar da acurácia obtida, sempre há espaço para melhorias no modelo, como a inclusão de mais variáveis que possam influenciar o desempenho dos pilotos, o que pode aprimorar ainda mais as previsões em cenários futuros.
 
-
-  ## Compilação e Execução 
+## Compilação e Execução 
 
 A pilha dinâmica disponibilizada possui um arquivo Makefile que realiza todo o procedimento de compilação e execução. Para tanto, temos as seguintes diretrizes de execução:
-
 
 | Comando                |      Função                                                                                           |                     
 | -----------------------| ------------------------------------------------------------------------------------------------- |
@@ -118,4 +153,3 @@ A pilha dinâmica disponibilizada possui um arquivo Makefile que realiza todo o 
 
 - Frank Leite Lemos Costa – Aluno do 6º período de Engenharia da Computação.
 - Mateus Henrique Pereira – Aluno do 8º período de Engenharia da Computação.
-
