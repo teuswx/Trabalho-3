@@ -258,7 +258,7 @@ Com base nas previsões realizadas, foi possível obter as probabilidades média
 
 ### Análise dos Resultados
 
-- **Max Verstappen** lidera com uma probabilidade de **1.0000**, indicando que ele é o piloto com a maior chance de conseguir pontos em 2025.
+- **Max Verstappen** lidera com uma probabilidade de **1.0000** (resultado esqusito, mas leva em cosnideração os pontos acima de 10 em relação a temporada), indicando que ele é o piloto com a maior chance de conseguir pontos em 2025.
 - **Lando Norris** e **Charles Leclerc** também têm chances muito altas, com probabilidades de **0.8333** e **0.7500**, respectivamente.
 - Outros pilotos como **Carlos Sainz** e **Sergio Pérez** também apresentam boas chances, com probabilidades superiores a 0.66.
 - **Lewis Hamilton** e **Fernando Alonso** estão em posições mais baixas, mas ainda têm chances razoáveis de alcançar pontos.
