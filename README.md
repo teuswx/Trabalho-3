@@ -268,13 +268,13 @@ Esses resultados são baseados em um modelo de previsão que utiliza dados hist�
 
 ## Considerações Finais 📝
 
-O trabalho foi desenvolvido com o objetivo de explorar a aplicação de árvores de decisão em diferentes contextos, com ênfase na previsão de desempenho de pilotos de Fórmula 1 para a temporada de 2025. Através do uso de dados históricos, foi possível criar um modelo que permitiu calcular a probabilidade de cada piloto alcançar pontos acima de 10, com uma acurácia de **0.88**.
+## Conclusão 📝
 
-O trabalho foi realizado em duas partes principais: a criação de um modelo interativo para ajudar usuários a escolher entre hobbies ou carreiras para entender melhor como funciona uma árvore de decisão, e a utilização de um dataset real de Fórmula 1 para prever a performance dos pilotos em 2025. O modelo mostrou um bom desempenho, refletido na sua acurácia e nas previsões de probabilidade de sucesso de cada piloto.
+O trabalho explorou a aplicação de árvores de decisão em dois cenários distintos: um modelo interativo para auxiliar usuários na escolha de hobbies ou carreiras e um modelo preditivo baseado em dados históricos da Fórmula 1.  
 
-Os resultados obtidos, principalmente para pilotos como **Max Verstappen** e **Lando Norris**, confirmam a consistência do modelo e sua capacidade de identificar padrões de performance em dados históricos. Em termos de impacto, a análise pode ser útil para ver pilotos que possuem melhor constância e desempenho, oferecendo uma base sólida para previsões e decisões baseadas em dados. 
+Os resultados obtidos na previsão de desempenho dos pilotos para 2025 apresentaram uma **acurácia de 0.88**, indicando um modelo bem ajustado para a tarefa proposta. A comparação entre diferentes algoritmos, como **Árvore de Decisão, KNN e SVM**, demonstrou variações na acurácia, principalmente no KNN que mantinha a acurácia fixa quando os datos estavam ordenados no dataset, porém, quando os dados são embaralhados, a acurácia varia entre 0,8577 e 0,8661.  
 
-Por fim, é importante ressaltar que, apesar da acurácia obtida, sempre há espaço para melhorias no modelo, como a inclusão de mais variáveis que possam influenciar o desempenho dos pilotos, o que pode aprimorar ainda mais as previsões em cenários futuros.
+Embora os resultados tenham sido positivos, há espaço para melhorias, como a inclusão de mais variáveis relevantes e ajustes nos hiperparâmetros para otimização do desempenho preditivo. No geral, o trabalho cumpriu seu objetivo de comparar e explorar técnicas de machine learning.  
 
 ## Compilação e Execução 
 
