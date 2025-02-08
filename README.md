@@ -97,12 +97,148 @@ Abaixo está a visualização da árvore de decisão treinada:
 
 Foi possível obter uma acurácia de **0.88**, o que significa um valor **muito bom** de acerto para previsão.
 
-### KNN
+# KNN (K-Nearest Neighbors)
 
-Foi possível obter uma acurácia de **0.86**, o que significa um valor **muito bom** de acerto para previsão.
-### SVM
+K-Nearest Neighbors (KNN) é um algoritmo de aprendizado supervisionado usado para **classificação** e **regressão**. Ele baseia suas previsões na proximidade dos dados de entrada em relação a outros pontos do conjunto de treinamento.
 
-Foi possível obter uma acurácia de **0.86**, o que significa um valor **muito bom** de acerto para previsão.
+## Funcionamento do KNN
+1. **Escolha do número de vizinhos (K)**: Define quantos vizinhos mais próximos serão considerados na predição.
+2. **Cálculo da distância entre os pontos**: Normalmente, usa-se a **distância Euclidiana** para medir a proximidade.
+3. **Seleção dos K vizinhos mais próximos**.
+4. **Classificação ou regressão**:
+   - **Classificação**: O novo ponto recebe a classe mais frequente entre os vizinhos.
+   - **Regressão**: O novo ponto recebe a média dos valores dos vizinhos.
+
+---
+
+## Cálculo da Distância no KNN
+
+O KNN usa fórmulas matemáticas para medir a similaridade entre os pontos. A mais comum é a **distância Euclidiana**, definida por:
+
+$$
+d(p, q) = \sqrt{\sum_{i=1}^{n} (q_i - p_i)^2}
+$$
+
+Onde:
+- \( p \) e \( q \) são dois pontos no espaço n-dimensional.
+- \( q_i \) e \( p_i \) são as coordenadas dos pontos nos diferentes atributos.
+- \( d(p, q) \) é a distância Euclidiana entre os pontos.
+
+### Exemplo de Cálculo:
+Se temos dois pontos \( A(2, 3) \) e \( B(5, 7) \), a distância Euclidiana entre eles é:
+
+$$
+d(A, B) = \sqrt{(5 - 2)^2 + (7 - 3)^2}
+$$
+
+$$
+d(A, B) = \sqrt{3^2 + 4^2} = \sqrt{9 + 16} = \sqrt{25} = 5
+$$
+
+Além da distância Euclidiana, outras métricas podem ser usadas, como:
+- **Distância de Manhattan**: 
+
+$$
+d(p, q) = \sum |q_i - p_i|
+$$
+
+- **Distância de Minkowski**: Generaliza as anteriores com um parâmetro \( p \):
+
+$$
+d(p, q) = \left( \sum |q_i - p_i|^p \right)^{\frac{1}{p}}
+$$
+
+---
+
+## Variância doa acurácia do KNN
+A acurácia do KNN pode variar por diferentes motivos, mesmo usando os mesmos dados:
+
+- **Escolha do valor de K**: Valores diferentes podem gerar resultados distintos.
+- **Divisão dos dados (Treino/Teste)**: Pequenas variações na separação dos dados podem mudar a classificação.
+- **Normalização dos dados**: A escala dos atributos pode influenciar no cálculo das distâncias.
+- **Pontos de fronteira**: Pequenas alterações nos dados podem mudar os vizinhos mais próximos, impactando a predição.
+
+Após o embaralhamento dos dados, a média passou a oscilar entre 0,8577 e 0,8661. Embora a diferença entre esses valores seja insignificativa, observou-se uma alteração na variância dos dados após o processo de embaralhamento. Isso indica que o embaralhamento teve um impacto relevante na dispersão dos valores, mesmo que a média tenha se mantido em uma faixa estreita.
+ 
+### Support Vector Machine (SVM)
+
+Support Vector Machine (SVM) é um algoritmo de aprendizado de máquina supervisionado usado principalmente para classificação, mas também pode ser aplicado em regressão. Ele trabalha encontrando o hiperplano ótimo que separa as classes de forma mais eficiente possível.
+
+---
+
+## Como Funciona o SVM?
+
+1. **Margem Máxima**:
+   - O SVM busca encontrar o hiperplano que maximiza a margem entre as classes de dados. A margem é definida como a distância entre o hiperplano e os pontos mais próximos de cada classe, chamados de **vetores de suporte**.
+
+2. **Vetores de Suporte**:
+   - São os pontos de dados que estão mais próximos do hiperplano e definem sua posição. A remoção de qualquer um desses pontos pode alterar a posição do hiperplano.
+
+3. **Hiperplano Ótimo**:
+   - O hiperplano é uma linha (em 2D), um plano (em 3D) ou um hiperplano em dimensões superiores que separa as classes da melhor maneira possível.
+
+4. **Classificação Linear e Não Linear**:
+   - Se os dados forem linearmente separáveis, o SVM encontrará um hiperplano reto.
+   - Se os dados não forem linearmente separáveis, usa-se o **truque do kernel**, que transforma os dados para um espaço dimensional superior onde se tornam linearmente separáveis.
+
+---
+
+## Função do Kernel
+
+O kernel é uma função que transforma os dados em um espaço dimensional superior para tornar a separação possível. Os principais tipos de kernel são:
+
+- **Linear**: $ K(x, y) = x \cdot y $
+- **Polinomial**: $ K(x, y) = (x \cdot y + c)^d $
+- **RBF (Radial Basis Function)**: $ K(x, y) = e^{-\gamma ||x - y||^2} $
+- **Sigmóide**: $ K(x, y) = \tanh(x \cdot y + c) $
+
+---
+
+## Fórmula Matemática do SVM
+
+Dado um conjunto de treinamento com $ n $ amostras $ (x_i, y_i) $, onde $ y_i \in \{-1, 1\} $, o SVM resolve o seguinte problema de otimização:
+
+$$
+\min_{{w, b}} \frac{1}{2} ||w||^2 \quad \text{sujeito a } \quad y_i (w \cdot x_i + b) \geq 1, \forall i
+$$
+
+Caso haja erros de classificação, usa-se a versão com **variáveis de folga** $ \xi_i $:
+
+$$
+\min_{{w, b, \xi}} \frac{1}{2} ||w||^2 + C \sum \xi_i \quad \text{sujeito a } \quad y_i (w \cdot x_i + b) \geq 1 - \xi_i, \forall i
+$$
+
+Onde $ C $ é um hiperparâmetro que controla o trade-off entre margem e erro de classificação.
+
+---
+
+## Aplicações do SVM
+
+- **Reconhecimento de padrões** (exemplo: reconhecimento de escrita)
+- **Diagnóstico médico** (exemplo: detecção de câncer)
+- **Detecção de fraudes**
+- **Processamento de imagens**
+
+---
+
+## Vantagens e Desvantagens
+
+### Vantagens:
+- Funciona bem em conjuntos de dados com margens claras de separação.
+- Eficiente em espaços de alta dimensão.
+- Usa um subconjunto de pontos de treinamento (vetores de suporte), tornando-o eficiente em termos de memória.
+
+### Desvantagens:
+- Sensível à escolha do tipo de kernel e dos hiperparâmetros.
+- Pode ser computacionalmente caro para conjuntos de dados muito grandes.
+
+---
+
+## Conclusão
+
+O SVM é um poderoso algoritmo de aprendizado de máquina usado principalmente para classificação. Seu princípio central é encontrar um hiperplano ótimo que maximize a margem entre as classes. Com o uso de funções de kernel, ele pode lidar com dados não linearmente separáveis, tornando-se uma ferramenta versátil para diversas aplicações.
+
+Com o SVM foi possível obter uma acurácia de 0.86, o que é um valor muito bom de acertos
 ## Pilotos com Maior Chance de Obter Pontos em 2025
 
 Com base nas previsões realizadas, foi possível obter as probabilidades médias de cada piloto para conseguir pontos acima de 10. Abaixo estão os **10 pilotos com maior chance** de alcançar esse feito, classificados em ordem decrescente de probabilidade:
